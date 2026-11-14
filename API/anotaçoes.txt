@@ -1,0 +1,36 @@
+// const nome = document.getElementById("nome")
+// const email = document.getElementById("email")
+// const telefone = document.getElementById("telefone")
+// const website = document.getElementById("website")
+// const company_name = document.getElementById("company_name")
+// const phone = document.getElementById("phone")
+// const lat = document.getElementById("lat")
+// const long = document.getElementById("long")
+
+const container = document.getElementById("container")
+
+fetch("https://jsonplaceholder.typicode.com/users/")
+    .then((res)=> res.json())
+    .then((data)=>{
+    //    console.log(data[3]) //Aqui é onde é adicinado os paremetros de busca dentro para api
+          console.log(data)
+          data.forEach(user => {
+            const card = document.createElement("div")
+            card.className = "box"
+            card.innerHTML = `
+             <p>Nome: ${user.name}</p>
+             <p>Latitude: ${user.address.geo.lat}</p>
+             <p>Longitude: ${user.address.geo.lng}</p>
+            `
+            container.appendChild(card)
+          })
+        //   nome.innerText = data[6].name
+        //   email.innerText = data[6].email
+        //   telefone.innerText = data[6].telefone
+        //   website.innerText = data[6].website
+        //   company_name.innerText = data[6].company.name
+        //   phone.innerText = data[6].phone
+        //   lat.innerText = data[6].address.geo
+        //   long.innerText = data[6].address.geo
+          
+    })
